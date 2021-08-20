@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.App.TextView.Main" parent="TextAppearance.MaterialComponents.Headline5">
+
+    </style>
+
+    <style name="TextAppearance.App.Button.Main" parent="TextAppearance.MaterialComponents.Button">
+    </style>
+
+
+</resources>
