@@ -3,6 +3,7 @@ package ibm2187.dev.pixabay.model.network.dto
 
 import com.google.gson.annotations.SerializedName
 import androidx.annotation.Keep
+import java.io.Serializable
 
 @Keep
 data class Hit(
@@ -28,4 +29,4 @@ data class Hit(
     @SerializedName("webformatHeight") val webformatHeight: Int,
     @SerializedName("webformatURL") val webformatURL: String,
     @SerializedName("webformatWidth") val webformatWidth: Int
-)
+) : Serializable

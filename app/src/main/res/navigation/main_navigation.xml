@@ -8,4 +8,15 @@
         android:id="@+id/discoverFragment"
         android:name="ibm2187.dev.pixabay.ui.pages.discover.DiscoverFragment"
         android:label="DiscoverFragment" />
+    <dialog
+        android:id="@+id/detailsDialog"
+        android:name="ibm2187.dev.pixabay.ui.dialogs.details.DetailsDialog"
+        android:label="DetailsDialog">
+        <argument
+            android:name="hit"
+            app:argType="ibm2187.dev.pixabay.model.network.dto.Hit" />
+    </dialog>
+    <action
+        android:id="@+id/dialog_details"
+        app:destination="@id/detailsDialog" />
 </navigation>
