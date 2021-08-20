@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_navigation">
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/discoverFragment">
 
+    <fragment
+        android:id="@+id/discoverFragment"
+        android:name="ibm2187.dev.pixabay.ui.pages.discover.DiscoverFragment"
+        android:label="DiscoverFragment" />
 </navigation>

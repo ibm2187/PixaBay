@@ -5,6 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
+import ibm2187.dev.pixabay.model.interactors.DiscoveryInteractor
 import ibm2187.dev.pixabay.model.interactors.SearchInteractor
 import ibm2187.dev.pixabay.model.network.api.PixabayApi
 
@@ -19,4 +20,13 @@ object InteractionModule {
     ): SearchInteractor {
         return SearchInteractor(pixabayApi)
     }
+
+    @ViewModelScoped
+    @Provides
+    fun getDiscoverInteraction(
+        pixabayApi: PixabayApi
+    ): DiscoveryInteractor {
+        return DiscoveryInteractor(pixabayApi)
+    }
+
 }

@@ -19,7 +19,7 @@ open class BaseNetworkInteractor {
         }.onSuccess {
             println("response = $it")
             if (it.isSuccessful) {
-                emit(ResponseWrapper.Success(it.body()))
+                emit(ResponseWrapper.Success(it.body()!!))
             } else {
                 emit(ResponseWrapper.Failure(it.message()))
             }

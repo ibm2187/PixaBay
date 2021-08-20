@@ -3,6 +3,8 @@ package ibm2187.dev.pixabay.ui.adapters
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.size.Scale
 import ibm2187.dev.pixabay.R
 import ibm2187.dev.pixabay.common.base.ui.BaseRvAdapter
 import ibm2187.dev.pixabay.common.utils.ext.inflateRvItem
@@ -16,10 +18,11 @@ class PixaBayImagesAdapter(
     inner class PixaBayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemImageMainBinding.bind(itemView)
         fun bindView(hit: Hit) {
-            //todo introduce a card view listener
-            binding.root.setOnClickListener {
+            binding.card.setOnClickListener {
                 clickListener.invoke(hit)
             }
+            binding.image.load(hit.webformatURL)
+            binding.user.text = hit.user
         }
     }
 

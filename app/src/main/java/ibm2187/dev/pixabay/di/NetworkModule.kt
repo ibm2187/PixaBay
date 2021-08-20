@@ -7,6 +7,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ibm2187.dev.pixabay.BuildConfig
+import ibm2187.dev.pixabay.model.network.api.PixabayApi
 import okhttp3.ConnectionPool
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -77,4 +78,10 @@ object NetworkModule {
     fun gsonProvider(): Gson = GsonBuilder()
         .setLenient()
         .create()
+
+    @Singleton
+    @Provides
+    fun getPixaBayApi(): PixabayApi {
+        return retrofitService().create(PixabayApi::class.java)
+    }
 }
