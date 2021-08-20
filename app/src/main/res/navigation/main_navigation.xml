@@ -7,7 +7,11 @@
     <fragment
         android:id="@+id/discoverFragment"
         android:name="ibm2187.dev.pixabay.ui.pages.discover.DiscoverFragment"
-        android:label="DiscoverFragment" />
+        android:label="Discover" >
+        <action
+            android:id="@+id/action_discoverFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
     <dialog
         android:id="@+id/detailsDialog"
         android:name="ibm2187.dev.pixabay.ui.dialogs.details.DetailsDialog"
@@ -19,4 +23,8 @@
     <action
         android:id="@+id/dialog_details"
         app:destination="@id/detailsDialog" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="ibm2187.dev.pixabay.ui.pages.search.SearchFragment"
+        android:label="Search" />
 </navigation>

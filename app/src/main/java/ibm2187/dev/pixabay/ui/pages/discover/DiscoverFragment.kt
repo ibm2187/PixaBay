@@ -1,13 +1,12 @@
 package ibm2187.dev.pixabay.ui.pages.discover
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import ibm2187.dev.pixabay.R
 import ibm2187.dev.pixabay.common.base.ui.BaseFragment
 import ibm2187.dev.pixabay.common.base.wrappers.ResponseWrapper
 import ibm2187.dev.pixabay.common.utils.ext.initGrid
@@ -36,6 +35,7 @@ class DiscoverFragment : BaseFragment<FragmentDiscoverBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
         binding.rv.initGrid(
             mainAdapter,
             GridLayoutManager(requireContext(), 2)
@@ -56,5 +56,16 @@ class DiscoverFragment : BaseFragment<FragmentDiscoverBinding>() {
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.discover_menu, menu)
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_action_search -> DiscoverFragmentDirections.actionDiscoverFragmentToSearchFragment()
+                .navigateWith(this)
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }

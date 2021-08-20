@@ -9,6 +9,7 @@
 
     <!--region action-->
     <string name="action_retry">Retry</string>
+    <string name="search">Search...</string>
     <!--endregion-->
 
 
