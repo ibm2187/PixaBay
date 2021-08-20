@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">PixaBay</string>
+
+    <!--region Errors-->
+    <string name="error_internet_failure">Please make sure you\'re connected to the internet.</string>
+    <string name="error_service_failure">There was an issue connecting to the service, please try again later.</string>
+    <!--endregion-->
+
 </resources>
