@@ -20,35 +20,41 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkModule {
-
-    private val pool = ConnectionPool(8, 30, TimeUnit.SECONDS)
-    private val loggingInterceptor =
-        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+class NetworkModule {
 
     @Singleton
     @Provides
-    fun retrofitService(): Retrofit {
+    fun provideConnectionPool(): ConnectionPool {
+        return ConnectionPool(8, 30, TimeUnit.SECONDS)
+    }
+
+    @Singleton
+    @Provides
+    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
+        return HttpLoggingInterceptor().setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE)
+    }
+
+    @Singleton
+    @Provides
+    fun retrofitService(client: OkHttpClient,gson: Gson): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create(gsonProvider()))
-            .client(provideOkhttpService(30))
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .client(client)
             .build()
     }
 
 
     @Singleton
     @Provides
-    fun provideOkhttpService(timeout: Long): OkHttpClient {
+    fun provideOkhttpService(pool: ConnectionPool,loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         val okHttpClient = OkHttpClient.Builder()
-        if (BuildConfig.DEBUG) {
-            okHttpClient.addInterceptor(loggingInterceptor)
-        }
+
         okHttpClient.apply {
-            addInterceptor(provideOkhttpLoggingInterceptor())
-            connectTimeout(timeout, TimeUnit.SECONDS)
-            writeTimeout(timeout, TimeUnit.SECONDS)
-            readTimeout(timeout, TimeUnit.SECONDS)
+            addInterceptor(loggingInterceptor)
+            connectTimeout(30, TimeUnit.SECONDS)
+            writeTimeout(30, TimeUnit.SECONDS)
+            readTimeout(30, TimeUnit.SECONDS)
             connectionPool(pool)
         }
 
@@ -81,7 +87,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun getPixaBayApi(): PixabayApi {
-        return retrofitService().create(PixabayApi::class.java)
+    fun getPixaBayApi(retrofit: Retrofit): PixabayApi {
+        return retrofit.create(PixabayApi::class.java)
     }
 }
