@@ -36,7 +36,7 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun retrofitService(client: OkHttpClient,gson: Gson): Retrofit {
+    fun retrofitService(client: OkHttpClient, gson: Gson): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
@@ -47,11 +47,16 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideOkhttpService(pool: ConnectionPool,loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+    fun provideOkhttpService(
+        pool: ConnectionPool,
+        loggingInterceptor: HttpLoggingInterceptor,
+        mainInterceptor: Interceptor
+    ): OkHttpClient {
         val okHttpClient = OkHttpClient.Builder()
 
         okHttpClient.apply {
             addInterceptor(loggingInterceptor)
+            addInterceptor(mainInterceptor)
             connectTimeout(30, TimeUnit.SECONDS)
             writeTimeout(30, TimeUnit.SECONDS)
             readTimeout(30, TimeUnit.SECONDS)
@@ -63,7 +68,7 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideOkhttpLoggingInterceptor(): Interceptor {
+    fun provideMainInterceptor(): Interceptor {
         return Interceptor {
             val request = it.request()
             val requestURL = request.url
