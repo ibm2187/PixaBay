@@ -66,11 +66,11 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         }
         vM.searchObservable.observe(viewLifecycleOwner) {
             binding.progress.isVisible = it is ResponseWrapper.Loading
-            when (it) {
-                is ResponseWrapper.Failure -> onFailure()
-                is ResponseWrapper.LocalFailure -> onLocalFailure()
-                is ResponseWrapper.Success -> onData(it.value)
-            }
+//            when (it) {
+//                is ResponseWrapper.Failure -> onFailure()
+//                is ResponseWrapper.LocalFailure -> onLocalFailure()
+//                is ResponseWrapper.Success -> onData(it.value)
+//            }
         }
     }
 
