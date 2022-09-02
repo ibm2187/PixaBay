@@ -1,4 +1,4 @@
-package ibm2187.dev.pixabay.common.utils.ext
+package dev.ibm2187.core.utils.ext
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager

@@ -23,7 +23,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         initToolbar(binding.toolbar)
 
         vM.toolbarLiftedObservable.observe(this) {
-            binding.appBarLayout.setLiftable(it )
+            binding.appBarLayout.setLiftable(it)
         }
 
     }

@@ -1,16 +1,12 @@
-package ibm2187.dev.pixabay.common.utils.ext
+package dev.ibm2187.core.utils.ext
 
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.appcompat.widget.SearchView
-import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import java.util.*
 
 
 fun ViewGroup.inflateRvItem(@LayoutRes itemRes: Int): View {

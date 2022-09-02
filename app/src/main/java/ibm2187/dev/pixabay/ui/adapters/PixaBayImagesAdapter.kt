@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.size.Scale
+import dev.ibm2187.core.utils.ext.inflateRvItem
 import ibm2187.dev.pixabay.R
 import ibm2187.dev.pixabay.common.base.ui.BaseRvAdapter
-import ibm2187.dev.pixabay.common.utils.ext.inflateRvItem
 import ibm2187.dev.pixabay.databinding.ItemImageMainBinding
 import ibm2187.dev.pixabay.model.network.dto.Hit
 

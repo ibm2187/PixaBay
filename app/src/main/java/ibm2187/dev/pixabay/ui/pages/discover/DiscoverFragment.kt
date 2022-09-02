@@ -6,11 +6,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import dev.ibm2187.core.utils.ext.initGrid
+import dev.ibm2187.core.utils.ext.navigateWith
 import ibm2187.dev.pixabay.R
 import ibm2187.dev.pixabay.common.base.ui.BaseFragment
 import ibm2187.dev.pixabay.common.base.wrappers.ResponseWrapper
-import ibm2187.dev.pixabay.common.utils.ext.initGrid
-import ibm2187.dev.pixabay.common.utils.ext.navigateWith
 import ibm2187.dev.pixabay.databinding.FragmentDiscoverBinding
 import ibm2187.dev.pixabay.ui.adapters.PixaBayImagesAdapter
 

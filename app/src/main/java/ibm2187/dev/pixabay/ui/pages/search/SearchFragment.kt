@@ -10,12 +10,11 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import dev.ibm2187.core.utils.ext.getQueryChangeFlow
+import dev.ibm2187.core.utils.ext.initGrid
+import dev.ibm2187.core.utils.ext.navigateWith
 import ibm2187.dev.pixabay.common.base.ui.BaseFragment
 import ibm2187.dev.pixabay.common.base.wrappers.ResponseWrapper
-import ibm2187.dev.pixabay.common.utils.ext.getQueryChangeFlow
-import ibm2187.dev.pixabay.common.utils.ext.init
-import ibm2187.dev.pixabay.common.utils.ext.initGrid
-import ibm2187.dev.pixabay.common.utils.ext.navigateWith
 import ibm2187.dev.pixabay.databinding.FragmentSearchBinding
 import ibm2187.dev.pixabay.model.network.responses.PixaBayResponse
 import ibm2187.dev.pixabay.ui.MainActivityViewModel
@@ -58,8 +57,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                 .distinctUntilChanged()
                 .asLiveData()
                 .observe(viewLifecycleOwner) { query ->
-                    Log.d("SEARCH", "onViewCreated: query = ${query.first}")
-                    //todo handle query empty
                     vM.setQuery(query.first?.toString())
                     vM.search()
                 }

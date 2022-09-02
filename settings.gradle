@@ -1,2 +1,6 @@
 rootProject.name = "PixaBay"
 include ':app'
+include ':core-designsystem'
+include ':core-ui'
+include ':core-data'
+include ':core-utils'
