@@ -43,11 +43,12 @@ class DiscoverFragment : BaseFragment<FragmentDiscoverBinding>() {
 
         vM.discoveryObservable.observe(viewLifecycleOwner) {
             binding.swipe.isRefreshing = it is ResponseWrapper.Loading
-//            when (it) {
-//                is ResponseWrapper.Failure -> TODO()
-//                is ResponseWrapper.LocalFailure -> TODO()
-//                is ResponseWrapper.Success -> mainAdapter.setItems(it.value.hits)
-//            }
+            when (it) {
+                is ResponseWrapper.Success -> mainAdapter.setItems(it.value.hits)
+                is ResponseWrapper.Failure -> {}
+                ResponseWrapper.Loading -> {}
+                is ResponseWrapper.LocalFailure -> {}
+            }
         }
 
         binding.swipe.setOnRefreshListener {

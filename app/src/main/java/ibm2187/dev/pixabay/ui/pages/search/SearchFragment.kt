@@ -1,7 +1,6 @@
 package ibm2187.dev.pixabay.ui.pages.search
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
@@ -16,11 +15,10 @@ import dev.ibm2187.core.utils.ext.navigateWith
 import ibm2187.dev.pixabay.common.base.ui.BaseFragment
 import ibm2187.dev.pixabay.common.base.wrappers.ResponseWrapper
 import ibm2187.dev.pixabay.databinding.FragmentSearchBinding
-import ibm2187.dev.pixabay.model.network.responses.PixaBayResponse
+import dev.ibm2187.pixabay.core.data.network.responses.PixaBayResponse
 import ibm2187.dev.pixabay.ui.MainActivityViewModel
 import ibm2187.dev.pixabay.ui.adapters.PixaBayImagesAdapter
 import ibm2187.dev.pixabay.ui.pages.discover.DiscoverFragmentDirections
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch

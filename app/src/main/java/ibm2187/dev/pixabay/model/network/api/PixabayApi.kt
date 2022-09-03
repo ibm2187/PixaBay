@@ -1,6 +1,6 @@
 package ibm2187.dev.pixabay.model.network.api
 
-import ibm2187.dev.pixabay.model.network.responses.PixaBayResponse
+import dev.ibm2187.pixabay.core.data.network.responses.PixaBayResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

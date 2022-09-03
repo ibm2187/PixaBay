@@ -10,6 +10,9 @@
     <!--region action-->
     <string name="action_retry">Retry</string>
     <string name="search">Search...</string>
+    <string name="fragment_discover">Discover</string>
+    <string name="fragment_discover_details">Details</string>
+    <string name="fragment_search">Search</string>
     <!--endregion-->
 
 

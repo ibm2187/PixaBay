@@ -7,7 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.ibm2187.core.utils.ext.asLiveData
 import ibm2187.dev.pixabay.common.base.wrappers.ResponseWrapper
 import ibm2187.dev.pixabay.model.interactors.SearchInteractor
-import ibm2187.dev.pixabay.model.network.responses.PixaBayResponse
+import dev.ibm2187.pixabay.core.data.network.responses.PixaBayResponse
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
