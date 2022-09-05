@@ -22,11 +22,9 @@ class DiscoverFragment : BaseFragment<FragmentDiscoverBinding>() {
     private val vM by viewModels<DiscoverViewModel>()
 
 
-    private val mainAdapter by lazy {
-        PixaBayImagesAdapter {
+    private val mainAdapter = PixaBayImagesAdapter {
             DiscoverFragmentDirections.dialogDetails(it).navigateWith(this@DiscoverFragment)
         }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +42,7 @@ class DiscoverFragment : BaseFragment<FragmentDiscoverBinding>() {
         vM.discoveryObservable.observe(viewLifecycleOwner) {
             binding.swipe.isRefreshing = it is ResponseWrapper.Loading
             when (it) {
-                is ResponseWrapper.Success -> mainAdapter.setItems(it.value.hits)
+                is ResponseWrapper.Success -> mainAdapter.submitList(it.value.hits)
                 is ResponseWrapper.Failure -> {}
                 ResponseWrapper.Loading -> {}
                 is ResponseWrapper.LocalFailure -> {}

@@ -16,7 +16,6 @@ import ibm2187.dev.pixabay.common.base.ui.BaseFragment
 import ibm2187.dev.pixabay.common.base.wrappers.ResponseWrapper
 import ibm2187.dev.pixabay.databinding.FragmentSearchBinding
 import dev.ibm2187.pixabay.core.data.network.responses.PixaBayResponse
-import ibm2187.dev.pixabay.ui.MainActivityViewModel
 import ibm2187.dev.pixabay.ui.adapters.PixaBayImagesAdapter
 import ibm2187.dev.pixabay.ui.pages.discover.DiscoverFragmentDirections
 import kotlinx.coroutines.flow.debounce
@@ -28,14 +27,13 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     override val _BindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentSearchBinding
         get() = FragmentSearchBinding::inflate
 
-    private val mainAdapter by lazy {
-        PixaBayImagesAdapter {
-            DiscoverFragmentDirections.dialogDetails(it).navigateWith(this@SearchFragment)
-        }
+    private val mainAdapter = PixaBayImagesAdapter {
+        DiscoverFragmentDirections.dialogDetails(it).navigateWith(this@SearchFragment)
     }
 
+
     private val vM by viewModels<SearchViewModel>()
-    private val mainVM by activityViewModels<MainActivityViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         vM.search()
@@ -55,30 +53,26 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                 .distinctUntilChanged()
                 .asLiveData()
                 .observe(viewLifecycleOwner) { query ->
-                    vM.setQuery(query.first?.toString())
+                    vM.setQuery(query.first)
                     vM.search()
                 }
         }
         vM.searchObservable.observe(viewLifecycleOwner) {
             binding.progress.isVisible = it is ResponseWrapper.Loading
-//            when (it) {
-//                is ResponseWrapper.Failure -> onFailure()
-//                is ResponseWrapper.LocalFailure -> onLocalFailure()
-//                is ResponseWrapper.Success -> onData(it.value)
-//            }
+            when (it) {
+                is ResponseWrapper.Failure -> onFailure()
+                is ResponseWrapper.LocalFailure -> onLocalFailure()
+                is ResponseWrapper.Success -> onData(it.value)
+                ResponseWrapper.Loading -> onLoading()
+            }
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        mainVM.setToolbarLifted(true)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        mainVM.setToolbarLifted(false)
+    private fun onLoading() {
 
     }
+
+
     private fun onLocalFailure() {
 
     }
@@ -91,9 +85,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         val hits = response.hits
         binding.noResults.isVisible = hits.isEmpty()
         binding.searchResults.isVisible = hits.isNotEmpty()
-        if (hits.isNotEmpty()) {
-            mainAdapter.setItems(hits)
-        }
+        mainAdapter.submitList(hits)
     }
 
 

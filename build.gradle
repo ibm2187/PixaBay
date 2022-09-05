@@ -12,7 +12,8 @@ buildscript {
         lifecycle_version = "2.5.1"
         material_version = "1.6.1"
         moshi_version = "1.13.0"
-
+        activity_version = "1.5.1"
+        fragment_version = "1.5.2"
     }
 
 
