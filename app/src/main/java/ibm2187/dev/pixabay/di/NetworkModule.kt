@@ -14,6 +14,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -74,7 +75,7 @@ class NetworkModule {
             val requestURL = request.url
 
             val requestQueryUrl = requestURL.newBuilder()
-                .addQueryParameter("key", "22987170-a645446e885845ec526c80906")
+                .addQueryParameter("key", BuildConfig.TOKEN_KEY)
                 .build()
 
             val requestBuilder = request.newBuilder()
