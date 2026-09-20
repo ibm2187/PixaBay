@@ -9,7 +9,6 @@ buildscript {
         classpath libs.kotlin.gradle.plugin
         classpath libs.hilt.android.gradle.plugin
         classpath libs.navigation.safeargs.gradle.plugin
-        classpath libs.android.junit5.gradle.plugin
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

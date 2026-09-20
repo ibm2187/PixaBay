@@ -15,8 +15,6 @@ retrofit = "2.7.2"
 gson = "2.8.7"
 okhttp = "4.9.0"
 
-androidJunit5 = "1.7.1.1"
-
 junit = "4.13.2"
 androidxTestExtJunit = "1.3.0"
 espresso = "3.7.0"
@@ -28,7 +26,6 @@ gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "gr
 kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 hilt-android-gradle-plugin = { group = "com.google.dagger", name = "hilt-android-gradle-plugin", version.ref = "hilt" }
 navigation-safeargs-gradle-plugin = { group = "androidx.navigation", name = "navigation-safe-args-gradle-plugin", version.ref = "navigation" }
-android-junit5-gradle-plugin = { group = "de.mannodermaus.gradle.plugins", name = "android-junit5", version.ref = "androidJunit5" }
 
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
@@ -66,4 +63,3 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 navigation-safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
 hilt-android-gradle = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-android-junit5 = { id = "de.mannodermaus.android-junit5", version.ref = "androidJunit5" }
