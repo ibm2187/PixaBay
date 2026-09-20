@@ -70,6 +70,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                 is ResponseWrapper.Failure -> onFailure()
                 is ResponseWrapper.LocalFailure -> onLocalFailure()
                 is ResponseWrapper.Success -> onData(it.value)
+                ResponseWrapper.Loading -> {}
             }
         }
     }
