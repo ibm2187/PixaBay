@@ -22,6 +22,10 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
 
+    companion object {
+        private const val BASE_URL = "https://pixabay.com/"
+    }
+
     @Singleton
     @Provides
     fun provideConnectionPool(): ConnectionPool {
@@ -38,7 +42,7 @@ class NetworkModule {
     @Provides
     fun retrofitService(client: OkHttpClient, gson: Gson): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(client)
             .build()

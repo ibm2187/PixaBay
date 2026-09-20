@@ -39,6 +39,7 @@ android {
     }
     buildFeatures{
         viewBinding true
+        buildConfig true
     }
     namespace 'ibm2187.dev.pixabay'
 }
