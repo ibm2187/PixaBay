@@ -23,12 +23,9 @@ android {
     buildTypes {
         debug {
             debuggable true
-            buildConfigField "String", "BASE_URL", '"https://pixabay.com/"'
 
         }
         release {
-            buildConfigField "String", "BASE_URL", '"https://pixabay.com/"'
-
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -43,6 +40,7 @@ android {
     buildFeatures{
         viewBinding true
     }
+    namespace 'ibm2187.dev.pixabay'
 }
 
 dependencies {
